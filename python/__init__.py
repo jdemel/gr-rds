@@ -26,7 +26,10 @@ from rds_swig import *
 qt5_available = False
 try:
     from PyQt5 import Qt, QtCore, QtWidgets
-    qt5_available = True
+    from gnuradio import gr
+    if gr.version().startswith('3.8.'):
+        qt5_available = True
+    
 except ImportError, e:
     print(e)
     qt5_available = False
